@@ -3,6 +3,7 @@ package jobs;
 import models.Atributo;
 import models.DarwinCore;
 import models.Indicador;
+import models.Mapping;
 import models.Observacao;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
@@ -45,13 +46,14 @@ public class StartUpJob extends Job {
 		new DarwinCore("occurenceMarks").save();
 		new DarwinCore("recordedBy").save();
 		new DarwinCore("eventDate").save();
-		new DarwinCore("verbatimLocality").save();
+		DarwinCore verbatimLocality = new DarwinCore("verbatimLocality");
+		verbatimLocality.save();
 		new DarwinCore("occurrenceRemarks").save();
 		new DarwinCore("eventTime").save();
 		new DarwinCore("individualCount").save();
 		new DarwinCore("measurementValue").save();
 		new DarwinCore("measurementUnit").save();
-		new DarwinCore("verbatimLocality").save();
+		verbatimLocality.save();
 		new DarwinCore("occurrenceRemarks").save();
 		new DarwinCore("decimalLatitude").save();
 		new DarwinCore("decimalLongitude").save();
@@ -73,6 +75,8 @@ public class StartUpJob extends Job {
 		new DarwinCore("kingdom").save();
 		new DarwinCore("vernacularName").save();
 		new DarwinCore("taxonRemarks").save();
+		
+		new Mapping(plantas, dap, verbatimLocality).save();
 
 	}
 
