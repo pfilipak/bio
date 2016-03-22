@@ -29,16 +29,13 @@ public class StartUpJob extends Job {
 		copa.save();
 		Atributo altura = new Atributo("altura");
 		altura.save();
-		Atributo armadilha = new Atributo("armadilha");
-		armadilha.save();
 		
 		FileUpload fileUpload = new FileUpload("teste.csv");
 		fileUpload.save();
 		
-		new Observacao(fileUpload, plantas, dap, "1.90").save();
-		new Observacao(fileUpload, plantas, copa, "2.0").save();
-		new Observacao(fileUpload, plantas, altura, "17.9").save();
-		new Observacao(fileUpload, borboletas, armadilha, "b5").save();
+		new Observacao(fileUpload, plantas, dap, "1.90", "dap;copa;altura", "1.90;2.0;17.9").save();
+		new Observacao(fileUpload, plantas, copa, "2.0", "dap;copa;altura", "1.90;2.0;17.9").save();
+		new Observacao(fileUpload, plantas, altura, "17.9", "dap;copa;altura", "1.90;2.0;17.9").save();
 		
 		new DarwinCore("catalogNumber").save();
 		new DarwinCore("recordedNumber").save();

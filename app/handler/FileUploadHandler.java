@@ -34,10 +34,12 @@ public class FileUploadHandler {
 			try {
 				String[] content = new String(data.asBytes()).split("\n");
 				Atributo[] headers = null;
+				String headerAsLine = null;
 				 for (int i = 0; i < content.length; i++) {
 					 Logger.info("Updating... Content[%S]", content[i]);
 					 trim = content[i].trim();
 					if (i == 0) {
+						headerAsLine = trim;
 						String[] headerFromFile = trim.split(";");
 						headers = new Atributo[headerFromFile.length];
 						for (int j = 0; j < headers.length; j++) {
@@ -53,9 +55,9 @@ public class FileUploadHandler {
 						 for (int j = 0; j < line.length; j++) {
 							
 							Indicador findById = Indicador.findById(new Long(1));
-							System.out.println(headers[j] + " = ");
-							System.out.println( " = " + line[j]);
-							new Observacao(uploadFile, findById, headers[j], line[j]).save();
+							Observacao observacao = new Observacao(uploadFile, findById, headers[j], line[j], headerAsLine, trim);
+							observacao.save();
+							
 						}
 					 }
 				}
