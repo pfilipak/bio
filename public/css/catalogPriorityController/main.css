@@ -1,0 +1,3 @@
+.content-app.fixed-header  { overflow: auto !important; }
+.app-body { height: auto !important; overflow: auto !important; }
+.pagination .active { background-color: #ccc; }

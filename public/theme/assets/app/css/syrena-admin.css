@@ -1,0 +1,76 @@
+/**
+ * syrena-admin.css v1.1
+ * Syrena admin template
+ *
+ * License:
+ * For License Information check out - https://wrapbootstrap.com
+ * 
+ * Copyright 2014, Stilearning
+ * http://stilearning.com
+ */
+
+
+
+/**
+ * Declaration usage fonts
+ */
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic,900,900italic); */
+
+
+
+
+/**
+ * Include all of default syrena stylesheet
+ */
+@import url('main.css');
+@import url('main-large-desktop.css');
+@import url('main-desktop.css');
+@import url('main-tablet.css');
+@import url('main-phone.css');
+
+@import url('helper.css');
+
+
+/**
+ * Styled components
+ * Include Theme Components
+ */
+@import url('typography.css');
+@import url('buttons.css');
+@import url('components.css');
+@import url('forms.css');
+
+
+/**
+ * Syrena default theme
+ */
+@import url('syrena-admin-theme-default.css');
+
+.magic-layout {
+	min-height: 700px !important;
+}
+
+.filter-window-overflow { max-height: 447px; overflow-x: auto; }
+
+.history { background-color: #F5F5F5; }
+
+.header { border-bottom: 1px solid #ccc; opacity: 0.3; }
+.header p { margin-bottom: 4px; font-size: 13px; }
+.header .header-item { padding-bottom: 10px; }
+#updateStatusSuccess { display: none;}
+#updateStatusFail { display: none; }
+
+.hasDelivery { display: none; }
+.hasReturn { display: none; }
+.delivAndReturnType { color: #ccc; font-weight: bold; text-transform: uppercase; margin: 2px 0px !important; }
+
+.confirm-yes { color: green; cursor: pointer; }
+.confirm-no { color: red;  cursor: pointer; }
+.remove-product { cursor: pointer; }
+.product-confirmation { display: none; }
+
+.relative { position: relative; }
+
+#red-error { position: absolute; top: 9px; left: -18px; display: none;}
+#red-error i { color: #e74c3c; }
+

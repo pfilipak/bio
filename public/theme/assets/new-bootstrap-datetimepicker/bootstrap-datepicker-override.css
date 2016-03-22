@@ -1,0 +1,12 @@
+.datepicker-days { padding: 12px; }
+.day { cursor: pointer !important; padding: 10px !important; }
+.old { background-color: #F2F2F2; color: #CCC; }
+.new { background-color: #F2F2F2; color: #CCC; }
+.prev { padding-left: 8px !important; }
+.prev:hover { cursor: pointer; background-color: #F2F2F2; border-radius: 3px; }
+.next { padding-left: 10px !important; }
+.next:hover { cursor: pointer; background-color: #F2F2F2; border-radius: 3px; }
+.active { background-color: #3498db; text-align: center; color: #FFF; border-radius: 3px;}
+.datepicker-error { border: 1px solid #C1073F }
+.text-danger { display: table-row; }
+.active { background-color:#000; color:fff;}

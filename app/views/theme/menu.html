@@ -1,0 +1,40 @@
+ <!-- open nav ul -->
+<ul>
+        <li class="side-nav-item ${request.action == 'Indicadors.list'? 'active' : '' }">
+            <a href="/indicador">
+                <i class="nav-item-icon icon ion-ios7-speedometer-outline"></i>
+                Indicador Biológico
+            </a>
+        </li>
+        <li class="side-nav-item ${request.action == 'Atributos.list'? 'active' : '' }">
+            <a href="/atributo">
+                <i class="nav-item-icon icon ion-ios7-speedometer-outline"></i>
+                Atributo
+            </a>
+        </li>
+        <li class="side-nav-item ${request.action == 'Observacaos.list'? 'active' : '' }">
+            <a href="/registro">
+                <i class="nav-item-icon icon ion-ios7-speedometer-outline"></i>
+                Observação
+            </a>
+        </li>
+        <li class="side-nav-item ${request.action == 'DarwinCores.list'? 'active' : '' }">
+            <a href="/darwincore">
+                <i class="nav-item-icon icon ion-ios7-speedometer-outline"></i>
+                Atributo DarwinCore
+            </a>
+        </li>
+        <li class="side-nav-item ${request.action == 'Mapping.list'? 'active' : '' }">
+            <a href="/mapping">
+                <i class="nav-item-icon icon ion-ios7-speedometer-outline"></i>
+                Mapeamento
+            </a>
+        </li>
+        <li class="side-nav-item ${request.action == 'ImportFileController.list'? 'active' : '' }">
+            <a href="/upload/list">
+                <i class="nav-item-icon icon ion-ios7-speedometer-outline"></i>
+                Importar Planilha
+            </a>
+        </li>
+        
+</ul><!-- /nav ul-->
