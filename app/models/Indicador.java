@@ -16,7 +16,7 @@ public class Indicador extends Model {
 	
 	@Override
 	public String toString() {
-		return nome;
+		return "Atributo [id=" + id + ", nome=" + nome + "]";
 	}
 	
 }

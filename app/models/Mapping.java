@@ -17,7 +17,7 @@ public class Mapping extends Model {
 	
 	@Override
 	public String toString() {
-		return "Mapping [indicador=" + indicador + ", atributo=" + atributo
+		return "Mapping [id=" + id + ", indicador=" + indicador + ", atributo=" + atributo
 				+ ", darwinCore=" + darwinCore + "]";
 	}
 	

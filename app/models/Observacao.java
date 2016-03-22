@@ -27,9 +27,8 @@ public class Observacao extends Model {
 	
 	@Override
 	public String toString() {
-		return "Observacao [indicador=" + indicador + ", atributo=" + atributo
+		return "Observacao [id=" + id + ", indicador=" + indicador + ", atributo=" + atributo
 				+ ", valor=" + valor + "]";
 	}
-	
-	
+
 }
