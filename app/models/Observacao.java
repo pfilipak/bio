@@ -11,11 +11,15 @@ public class Observacao extends Model {
 	public Observacao() {
 	}
 	
-	public Observacao(Indicador indicador, Atributo atributo, String valor) {
+	public Observacao(FileUpload fileUpload, Indicador indicador, Atributo atributo, String valor) {
+		this.fileUpload = fileUpload;
 		this.indicador = indicador;
 		this.atributo = atributo;
 		this.valor = valor;
 	}
+	
+	@ManyToOne
+	public FileUpload fileUpload;
 	
 	@ManyToOne
 	public Indicador indicador;
@@ -27,7 +31,7 @@ public class Observacao extends Model {
 	
 	@Override
 	public String toString() {
-		return "Observacao [id=" + id + ", indicador=" + indicador + ", atributo=" + atributo
+		return "Observacao [id=" + id + ", lote=" + fileUpload + ", indicador=" + indicador + ", atributo=" + atributo
 				+ ", valor=" + valor + "]";
 	}
 

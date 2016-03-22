@@ -18,8 +18,21 @@ public class FileUpload extends Model {
 	
 	public Date createDate = new Date();
 	
+	public FileUpload(){}
+	
+	public FileUpload(String name){
+		this.name = name;
+		createDate = new Date();
+		status = Status.PROCESSED;
+	}
+	
 	public enum Status {
 		CREATED, PROCESSED, ERROR;
+	}
+
+	@Override
+	public String toString() {
+		return id + "";
 	}
 	
 }

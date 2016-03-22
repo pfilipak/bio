@@ -17,7 +17,7 @@ public class DarwinCore extends Model {
 	
 	@Override
 	public String toString() {
-		return "Atributo [id=" + id + ", nome=" + nome + "]";
+		return "DarwinCore [id=" + id + ", nome=" + nome + "]";
 	}
 	
 }

@@ -2,6 +2,7 @@ package jobs;
 
 import models.Atributo;
 import models.DarwinCore;
+import models.FileUpload;
 import models.Indicador;
 import models.Mapping;
 import models.Observacao;
@@ -31,10 +32,13 @@ public class StartUpJob extends Job {
 		Atributo armadilha = new Atributo("armadilha");
 		armadilha.save();
 		
-		new Observacao(plantas, dap, "1.90").save();
-		new Observacao(plantas, copa, "2.0").save();
-		new Observacao(plantas, altura, "17.9").save();
-		new Observacao(borboletas, armadilha, "b5").save();
+		FileUpload fileUpload = new FileUpload("teste.csv");
+		fileUpload.save();
+		
+		new Observacao(fileUpload, plantas, dap, "1.90").save();
+		new Observacao(fileUpload, plantas, copa, "2.0").save();
+		new Observacao(fileUpload, plantas, altura, "17.9").save();
+		new Observacao(fileUpload, borboletas, armadilha, "b5").save();
 		
 		new DarwinCore("catalogNumber").save();
 		new DarwinCore("recordedNumber").save();

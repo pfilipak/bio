@@ -33,12 +33,13 @@ public class FileUploadHandler {
 			String trim = "";
 			try {
 				String[] content = new String(data.asBytes()).split("\n");
-				Atributo[] headers = new Atributo[content.length];
+				Atributo[] headers = null;
 				 for (int i = 0; i < content.length; i++) {
-
+					 Logger.info("Updating... Content[%S]", content[i]);
 					 trim = content[i].trim();
 					if (i == 0) {
 						String[] headerFromFile = trim.split(";");
+						headers = new Atributo[headerFromFile.length];
 						for (int j = 0; j < headers.length; j++) {
 //							headers[j] = headerFromFile[j];
 							Atributo atributo = Atributo.find("nome", headerFromFile[j]).first();
@@ -48,12 +49,13 @@ public class FileUploadHandler {
 							headers[j] = atributo;
 						}
 					 } else {
-						 Logger.info("Updating... Content[%S]", content[i]);
 						 String[] line = trim.split(";");
 						 for (int j = 0; j < line.length; j++) {
 							
-							 Indicador findById = Indicador.findById(new Long(1));
-							new Observacao(findById, headers[j], line[j]).save();
+							Indicador findById = Indicador.findById(new Long(1));
+							System.out.println(headers[j] + " = ");
+							System.out.println( " = " + line[j]);
+							new Observacao(uploadFile, findById, headers[j], line[j]).save();
 						}
 					 }
 				}
