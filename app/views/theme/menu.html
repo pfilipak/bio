@@ -5,23 +5,11 @@
                 Observações
             </a>
         </li>
-        <li class="side-nav-item ${request.action == 'TaxonomiaFileController.list'? 'active' : '' }">
-            <a href="/upload/taxonomia/list">
-                <i class="nav-item-icon icon glyphicon glyphicon-edit"></i>
-                Importar taxonomia
-            </a>
-        </li>
 
         <li class="side-nav-item ${request.action == 'ImportFileController.list'? 'active' : '' }">
             <a href="/upload/planilha/list">
                 <i class="nav-item-icon icon glyphicon glyphicon-import"></i>
                 Importar Planilha
-            </a>
-        </li>
-        <li class="side-nav-item ${request.action == 'DevController.list'? 'active' : '' }">
-            <a href="/dev">
-                <i class="nav-item-icon glyphicon glyphicon-tower"></i>
-                Taxonomia
             </a>
         </li>
         <li class="side-nav-item ${request.action == 'DevController.list'? 'active' : '' }">
@@ -40,7 +28,8 @@
                 %{
                 if(request.controller == 'Indicadors'
                 || request.controller == 'Atributos'
-                || request.controller == 'Mapping'
+                || request.controller == 'Mappings'
+                || request.controller == 'TaxonomiaFileController'
                 || request.controller == 'DarwinCores') {
                         importContentClass = 'open'
                     }
@@ -70,10 +59,16 @@
                             Atributos DarwinCore
                         </a>
                     </li>
-                    <li class="side-nav-item ${request.action == 'Mapping.list'? 'active' : '' }">
+                    <li class="side-nav-item ${request.action == 'Mappings.list'? 'active' : '' }">
 			            <a href="/mapping">
 			                <i class="nav-item-icon icon glyphicon glyphicon-random"></i>
 			                Mapeamento
+			            </a>
+			        </li>
+			        <li class="side-nav-item ${request.action == 'TaxonomiaFileController.list'? 'active' : '' }">
+			            <a href="/upload/taxonomia/list">
+			                <i class="nav-item-icon icon glyphicon glyphicon-edit"></i>
+			                Importar taxonomia
 			            </a>
 			        </li>
                 </ul>
