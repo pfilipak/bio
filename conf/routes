@@ -10,14 +10,16 @@ GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
-*       /												Indicadors.list
+*       /												ImportFileController.list
 *       /indicador										Indicadors.list
 *       /atributo										Atributos.list
 *       /registro										Observacaos.list
 *       /darwincore										DarwinCores.list
 *       /mapping										Mappings.list
-*       /upload											ImportFileController.upload
-*       /upload/list									ImportFileController.list
+*       /upload/planilha								ImportFileController.upload
+*       /upload/planilha/list							ImportFileController.list
+*       /upload/taxonomia								TaxonomiaFileController.upload
+*       /upload/taxonomia/list							TaxonomiaFileController.list
 *       /dev											DevController.list
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

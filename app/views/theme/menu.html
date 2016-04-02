@@ -1,43 +1,19 @@
- <!-- open nav ul -->
 <ul>
-        <li class="side-nav-item ${request.action == 'Indicadors.list'? 'active' : '' }">
-            <a href="/indicador">
-                <i class="nav-item-icon icon glyphicon glyphicon-compressed"></i>
-                Indicador Biológico
-            </a>
-        </li>
-        <li class="side-nav-item ${request.action == 'Atributos.list'? 'active' : '' }">
-            <a href="/atributo">
-                <i class="nav-item-icon icon glyphicon glyphicon-flag"></i>
-                Atributo
-            </a>
-        </li>
         <li class="side-nav-item ${request.action == 'Observacaos.list'? 'active' : '' }">
             <a href="/registro">
                 <i class="nav-item-icon icon glyphicon glyphicon-edit"></i>
-                Observação
+                Observações
             </a>
         </li>
-        <li class="side-nav-item ${request.action == 'DevController.list'? 'active' : '' }">
-            <a href="/dev">
+        <li class="side-nav-item ${request.action == 'TaxonomiaFileController.list'? 'active' : '' }">
+            <a href="/upload/taxonomia/list">
                 <i class="nav-item-icon icon glyphicon glyphicon-edit"></i>
-                Lote
+                Importar taxonomia
             </a>
         </li>
-        <li class="side-nav-item ${request.action == 'DarwinCores.list'? 'active' : '' }">
-            <a href="/darwincore">
-                <i class="nav-item-icon icon glyphicon glyphicon-tag"></i>
-                Atributo DarwinCore
-            </a>
-        </li>
-        <li class="side-nav-item ${request.action == 'Mapping.list'? 'active' : '' }">
-            <a href="/mapping">
-                <i class="nav-item-icon icon glyphicon glyphicon-random"></i>
-                Mapeamento
-            </a>
-        </li>
+
         <li class="side-nav-item ${request.action == 'ImportFileController.list'? 'active' : '' }">
-            <a href="/upload/list">
+            <a href="/upload/planilha/list">
                 <i class="nav-item-icon icon glyphicon glyphicon-import"></i>
                 Importar Planilha
             </a>
@@ -45,14 +21,63 @@
         <li class="side-nav-item ${request.action == 'DevController.list'? 'active' : '' }">
             <a href="/dev">
                 <i class="nav-item-icon glyphicon glyphicon-tower"></i>
-                Atributos Fixos
+                Taxonomia
             </a>
         </li>
         <li class="side-nav-item ${request.action == 'DevController.list'? 'active' : '' }">
             <a href="/dev">
                 <i class="nav-item-icon icon glyphicon glyphicon-export"></i>
-                Exportar
+                Exportar DarwinCore
             </a>
         </li>
         
-</ul><!-- /nav ul-->
+         <li class="side-nav-item ">   
+                <a href="#level3">
+                    <i class="nav-item-caret"></i>
+                    <i class="nav-item-icon glyphicon glyphicon-cloud-upload"></i>
+                    Configurações
+                </a>
+                %{
+                if(request.controller == 'Indicadors'
+                || request.controller == 'Atributos'
+                || request.controller == 'Mapping'
+                || request.controller == 'DarwinCores') {
+                        importContentClass = 'open'
+                    }
+                }%
+                <ul id="level3" class="side-nav-child ${importContentClass}">
+                    <li class="side-nav-item-heading">
+                        <a href="#" class="side-nav-back">
+                            <i class="nav-item-caret"></i>
+                           Configurações
+                        </a>
+                    </li><!-- /header level menu child -->
+                     <li class="side-nav-item ${request.action == 'Indicadors.list'? 'active' : '' }">
+                        <a href="@{Indicadors.list}">
+                            <i class="nav-item-icon glyphicon glyphicon-fire"></i>
+                            Indicador
+                        </a>
+                    </li>
+                    <li class="side-nav-item ${request.action == 'Atributos.list'? 'active' : '' }">
+                        <a href="@{Atributos.list}">
+                            <i class="nav-item-icon glyphicon glyphicon-pencil"></i>
+                            Metadados do Indicador
+                        </a>
+                    </li>
+                    <li class="side-nav-item ${request.action == 'DarwinCores.list'? 'active' : '' }">
+                        <a href="@{DarwinCores.list}">
+                            <i class="nav-item-icon glyphicon glyphicon-pushpin"></i>
+                            Atributos DarwinCore
+                        </a>
+                    </li>
+                    <li class="side-nav-item ${request.action == 'Mapping.list'? 'active' : '' }">
+			            <a href="/mapping">
+			                <i class="nav-item-icon icon glyphicon glyphicon-random"></i>
+			                Mapeamento
+			            </a>
+			        </li>
+                </ul>
+            </li>
+        
+        
+</ul>
