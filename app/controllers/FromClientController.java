@@ -1,26 +1,26 @@
 package controllers;
 
-import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 import play.Logger;
 import play.mvc.Controller;
+import play.mvc.Http.Header;
 
 public class FromClientController extends Controller {
 
 	public static void formList(String body) {
-Path path;
-		//		Map<String, play.mvc.Http.Header> headers = response.headers;
-//		headers.put("contentType", new Header("contentType", "text/xml"));
-//		headers.put("charset", new Header("charset", "utf8"));
-		Logger.info(body);
+				Map<String, play.mvc.Http.Header> headers = response.headers;
+		headers.put("contentType", new Header("contentType", "text/xml"));
+		headers.put("charset", new Header("charset", "utf8"));
+		headers.put("X-OpenRosa-Version", new Header("X-OpenRosa-Version", "1.0"));
+		Logger.info(readFileAsList());
 		renderXml(readFileAsList());
 //		renderXml("<xforms>FormBorboleta.xml;asfd;asfd;asfd</xforms>");
-		
+		//public/images/favicon.png
 	}
 	
 	private static String readFileAsList() {

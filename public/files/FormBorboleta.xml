@@ -1,0 +1,211 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa">
+  <h:head>
+    <h:title>FormBorboleta</h:title>
+    <model>
+      <instance>
+        <data id="build_FormBorboleta_1426784944">
+          <meta>
+            <instanceID/>
+          </meta>
+          <formNumber/>
+          <date/>
+          <weatherCondition/>
+          <transecto/>
+          <revision/>
+          <collector/>
+          <samplingStation/>
+          <protectedArea/>
+          <observation jr:template="">
+            <tribeCode/>
+            <uncertainty/>
+            <individualNumber/>
+            <trap/>
+          </observation>
+        </data>
+      </instance>
+      <itext>
+        <translation lang="eng">
+          <text id="/data/formNumber:label">
+            <value>Número do Formulário</value>
+          </text>
+          <text id="/data/date:label">
+            <value>Date</value>
+          </text>
+          <text id="/data/date:hint">
+            <value></value>
+          </text>
+          <text id="/data/date:constraintMsg">
+            <value>Date</value>
+          </text>
+          <text id="/data/weatherCondition:label">
+            <value>Condição do Tempo</value>
+          </text>
+          <text id="/data/weatherCondition:option0">
+            <value>Céu limpo</value>
+          </text>
+          <text id="/data/weatherCondition:option1">
+            <value>Parcialmente Nublado</value>
+          </text>
+          <text id="/data/weatherCondition:option2">
+            <value>Nublado</value>
+          </text>
+          <text id="/data/transecto:label">
+            <value>Transecto</value>
+          </text>
+          <text id="/data/revision:label">
+            <value>Revisão</value>
+          </text>
+          <text id="/data/collector:label">
+            <value>Coletor</value>
+          </text>
+          <text id="/data/samplingStation:label">
+            <value>Estação Amostral</value>
+          </text>
+          <text id="/data/samplingStation:option0">
+            <value>A</value>
+          </text>
+          <text id="/data/samplingStation:option1">
+            <value>B</value>
+          </text>
+          <text id="/data/samplingStation:option2">
+            <value>C</value>
+          </text>
+          <text id="/data/protectedArea:label">
+            <value>Unidade de Conservação</value>
+          </text>
+          <text id="/data/protectedArea:option0">
+            <value>Flona do Jamari</value>
+          </text>
+          <text id="/data/protectedArea:option1">
+            <value>Flona Tapajós</value>
+          </text>
+          <text id="/data/protectedArea:option2">
+            <value>Flona de Irati</value>
+          </text>
+          <text id="/data/observation:label">
+            <value>Observação</value>
+          </text>
+          <text id="/data/observation/tribeCode:label">
+            <value>Código da Tribo</value>
+          </text>
+          <text id="/data/observation/uncertainty:label">
+            <value>Incerteza</value>
+          </text>
+          <text id="/data/observation/uncertainty:option0">
+            <value>Sim</value>
+          </text>
+          <text id="/data/observation/uncertainty:option1">
+            <value>Não</value>
+          </text>
+          <text id="/data/observation/individualNumber:label">
+            <value>Número de Indivíduos</value>
+          </text>
+          <text id="/data/observation/trap:label">
+            <value>Armadilha</value>
+          </text>
+        </translation>
+      </itext>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/formNumber" type="int"/>
+      <bind nodeset="/data/date" type="date" jr:constraintMsg="jr:itext('/data/date:constraintMsg')"/>
+      <bind nodeset="/data/weatherCondition" type="select1"/>
+      <bind nodeset="/data/transecto" type="int"/>
+      <bind nodeset="/data/revision" type="int"/>
+      <bind nodeset="/data/collector" type="string"/>
+      <bind nodeset="/data/samplingStation" type="select1"/>
+      <bind nodeset="/data/protectedArea" type="select1"/>
+      <bind nodeset="/data/observation/tribeCode" type="string"/>
+      <bind nodeset="/data/observation/uncertainty" type="select1"/>
+      <bind nodeset="/data/observation/individualNumber" type="int"/>
+      <bind nodeset="/data/observation/trap" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/data/formNumber">
+      <label ref="jr:itext('/data/formNumber:label')"/>
+    </input>
+    <input ref="/data/date">
+      <label ref="jr:itext('/data/date:label')"/>
+      <hint ref="jr:itext('/data/date:hint')"/>
+    </input>
+    <select1 ref="/data/weatherCondition">
+      <label ref="jr:itext('/data/weatherCondition:label')"/>
+      <item>
+        <label ref="jr:itext('/data/weatherCondition:option0')"/>
+        <value>C</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/weatherCondition:option1')"/>
+        <value>P</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/weatherCondition:option2')"/>
+        <value>N</value>
+      </item>
+    </select1>
+    <input ref="/data/transecto">
+      <label ref="jr:itext('/data/transecto:label')"/>
+    </input>
+    <input ref="/data/revision">
+      <label ref="jr:itext('/data/revision:label')"/>
+    </input>
+    <input ref="/data/collector">
+      <label ref="jr:itext('/data/collector:label')"/>
+    </input>
+    <select1 ref="/data/samplingStation">
+      <label ref="jr:itext('/data/samplingStation:label')"/>
+      <item>
+        <label ref="jr:itext('/data/samplingStation:option0')"/>
+        <value>A</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/samplingStation:option1')"/>
+        <value>B</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/samplingStation:option2')"/>
+        <value>C</value>
+      </item>
+    </select1>
+    <select1 ref="/data/protectedArea">
+      <label ref="jr:itext('/data/protectedArea:label')"/>
+      <item>
+        <label ref="jr:itext('/data/protectedArea:option0')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/protectedArea:option1')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/protectedArea:option2')"/>
+        <value>3</value>
+      </item>
+    </select1>
+    <group>
+      <label ref="jr:itext('/data/observation:label')"/>
+      <repeat nodeset="/data/observation">
+        <input ref="/data/observation/tribeCode">
+          <label ref="jr:itext('/data/observation/tribeCode:label')"/>
+        </input>
+        <select1 ref="/data/observation/uncertainty">
+          <label ref="jr:itext('/data/observation/uncertainty:label')"/>
+          <item>
+            <label ref="jr:itext('/data/observation/uncertainty:option0')"/>
+            <value>true</value>
+          </item>
+          <item>
+            <label ref="jr:itext('/data/observation/uncertainty:option1')"/>
+            <value>false</value>
+          </item>
+        </select1>
+        <input ref="/data/observation/individualNumber">
+          <label ref="jr:itext('/data/observation/individualNumber:label')"/>
+        </input>
+        <input ref="/data/observation/trap">
+          <label ref="jr:itext('/data/observation/trap:label')"/>
+        </input>
+      </repeat>
+    </group>
+  </h:body>
+</h:html>
