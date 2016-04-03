@@ -2,10 +2,10 @@ package controllers;
 
 import java.util.List;
 
-import play.db.Model;
-import play.exceptions.TemplateNotFoundException;
-import controllers.CRUD.ObjectType;
+import models.Indicador;
 import models.Observacao;
+import models.ObservacaoDetail;
+import play.db.Model;
 
 @CRUD.For(Observacao.class)
 public class Observacaos extends CRUD {
@@ -19,7 +19,8 @@ public class Observacaos extends CRUD {
         List<Model> objects = type.findPage(page, search, searchFields, orderBy, order, (String) request.args.get("where"));
         Long count = type.count(search, searchFields, (String) request.args.get("where"));
         Long totalCount = type.count(null, null, (String) request.args.get("where"));
-        render(type, objects, count, totalCount, page, orderBy, order);
+        Model indicador = objects.iterator().next();
+        render(type, objects, count, totalCount, page, orderBy, order, indicador);
     }
 	 
 }

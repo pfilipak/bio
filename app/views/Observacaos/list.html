@@ -18,32 +18,51 @@
 	     <table class="table table-striped">
 	         <thead>
 	             <tr>
-	                 <th>Id</th>
-	                 <th>Indicador</th>
-	                 <th>Atributo</th>
-	                 <th>Valor</th>
+	         	#{list objects, as:'object'}
+	         		#{if object.observacaoDetailList.isEmpty() }
+	                 	<th>${object.atributo.nome}</th>
+	                 #{/if}
+	             #{/list}
 	             </tr>
 	         </thead>
 	         <tbody>
-	         #{list objects, as:'object'}
 	         <tr>
-	                 <td>${object.id}</td>
-					 <td>${object.indicador.nome}</td>
-	                 <td>${object.atributo.nome}</td>
-	                 <td>${object.valor}</td>
-	             </tr>
+	        #{list objects, as:'object'}
+	        	#{if object.observacaoDetailList.isEmpty() }
+	                 <td><a href="/observacaos/show?id=${object.id}">${object.valor}</a></td>
+	            #{/if}
 			#{/list}
+	             </tr>
+	         </tbody>
+	     </table>
+ 		</div>
+ 		
+    <div id="crudListTable">
+      <div id="panel2" class="panel panel-default magic-element width-full isotope-item col-md-10" style="position: relative">
+	     <div class="panel-heading">
+	     	<strong>Detalhes de cada observacao</strong>
+	     </div>
+	     <table class="table table-striped">
+	         <thead>
+	             <tr>
+	             #{ifnot object.observacaoDetailList.isEmpty() }
+	         	#{list object.observacaoDetailList, as:'object1'}
+	                 	<th>${object1.atributo.nome}</th>
+	             #{/list}
+	             #{/ifnot}
+	             </tr>
+	         </thead>
+	         <tbody>
+	         <tr>
+	        #{list object.observacaoDetailList, as:'object1'}
+	                 <td><a href="/observacaodetails/show?id=${object1.id}">${object1.valor}</a></td>
+			#{/list}
+	             </tr>
 	         </tbody>
 	     </table>
  		</div>
     </div>
 
-    <div id="crudListPagination">
-        #{crud.pagination /}
-    </div>
 
-    <p id="crudListAdd">
-        <a href="@{blank()}">&{'crud.add', type.modelName}</a>
-    </p>
 
 </div>

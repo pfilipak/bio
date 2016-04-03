@@ -64,9 +64,10 @@ public class MobileHandler {
 								                Atributo atributo1 = Atributo.findByNome(e1.getTagName());
 								                String textContent = e1.getTextContent();
 					                			Logger.info("observacao1[%s] atributo[%s] textContent[%s]", observacao1,  atributo1, textContent);
-					                			Logger.info("atributo1[%s]", atributo1);
-					                			ObservacaoDetail observacaoDetail = new ObservacaoDetail(observacao1, atributo1, e1.getTextContent());
+					                			ObservacaoDetail observacaoDetail = new ObservacaoDetail(observacao1, atributo1, textContent);
 					                			observacaoDetail.save();
+					                			observacao1.observacaoDetailList.add(observacaoDetail);
+					                			observacao1.save();
 											}
 //										}
 									}
