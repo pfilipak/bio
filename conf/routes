@@ -20,6 +20,7 @@ GET     /public/                                staticDir:public
 *       /upload/planilha/list							ImportFileController.list
 *       /upload/taxonomia								TaxonomiaFileController.upload
 *       /upload/taxonomia/list							TaxonomiaFileController.list
+*       /export/darwincore								ExportDarwinCoreController.index
 *       /dev											DevController.list
 *       /formList										FromClientController.formList
 *       /submission										FromClientController.submission

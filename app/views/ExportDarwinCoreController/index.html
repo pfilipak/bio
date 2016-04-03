@@ -1,0 +1,57 @@
+#{extends 'theme/main.html' /}
+#{set 'moreScripts'}
+	<script src="/public/theme/assets/bootstrap-jasny/js/fileinput.js"></script>
+#{/set}
+
+#{set title:'Home' /}
+
+<ul>
+#{if flash.error}
+<div class="form-group col-md-10">
+    <p class="text-danger text-center">
+        <strong>${flash.error}</strong>
+    </p>
+</div>	
+#{/if}
+
+#{if flash.success}
+<div class="form-group col-md-10">
+    <p class="text-success text-center">
+        <strong>${flash.success}</strong>
+    </p>
+</div>
+#{/if}
+
+<div class="form-group col-md-10">
+	 <p class="text-center">
+	 	<center><h2>${title}</h2></center>
+	 </p>
+</div>
+
+
+ 
+ <div id="panel2" class="panel panel-default magic-element width-full isotope-item col-md-10" style="position: relative">
+     <div class="panel-heading">
+     	<strong>&Uacute;ltimos arquivos importados</strong>
+     </div><!-- /panel-heading -->
+     <table class="table table-striped">
+         <thead>
+             <tr>
+                 <th>Id</th>
+                 <th>Status</th>
+                 <th>Nome do arquivo</th>
+                 <th>Data cria&ccedil;&atilde;o</th>
+             </tr>
+         </thead>
+         <tbody>
+         #{list items:fileList, as:'file'}
+         <tr>
+                 <td>${file.id}</td>
+				 <td><span class="label label-success">${file.status}</span></td>
+                 <td>${file.name}</td>
+                 <td>${file.createDate}</td>
+             </tr>
+		#{/list}
+         </tbody>
+     </table><!-- /table-striped -->
+ </div>
