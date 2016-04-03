@@ -19,6 +19,11 @@ public class ImportFileController extends Controller {
 		render(uploadFileList, title, sampleLine, sampleHead);
     }
 	
+	public static void edit(){
+		List<FileUpload> uploadFileList = new PlanilhaUploadHandler().lastFileImport();
+		render(uploadFileList);
+	}
+	
 	public static void upload(Upload data) throws Exception{
 		Logger.info("import... lala");
 			new PlanilhaUploadHandler().upload(data, flash, validation);

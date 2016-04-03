@@ -5,6 +5,12 @@
                 Observações
             </a>
         </li>
+        <li class="side-nav-item ${request.action == 'ImportFileController.edit'? 'active' : '' }">
+            <a href="/upload/planilha/edit">
+                <i class="nav-item-icon icon glyphicon glyphicon-edit"></i>
+                Arquivo
+            </a>
+        </li>
 
         <li class="side-nav-item ${request.action == 'ImportFileController.list'? 'active' : '' }">
             <a href="/upload/planilha/list">

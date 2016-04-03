@@ -14,10 +14,12 @@ GET     /public/                                staticDir:public
 *       /indicador										Indicadors.list
 *       /atributo										Atributos.list
 *       /registro										Observacaos.list
+*       /upload/list/{fileUploadId}						Observacaos.editByFile
 *       /darwincore										DarwinCores.list
 *       /mapping										Mappings.list
 *       /upload/planilha								ImportFileController.upload
 *       /upload/planilha/list							ImportFileController.list
+*       /upload/planilha/edit							ImportFileController.edit
 *       /upload/taxonomia								TaxonomiaFileController.upload
 *       /upload/taxonomia/list							TaxonomiaFileController.list
 *       /export/darwincore								ExportDarwinCoreController.index

@@ -10,17 +10,18 @@
         #{crud.search /}
     </div>
 
+ 		
     <div id="crudListTable">
       <div id="panel2" class="panel panel-default magic-element width-full isotope-item col-md-10" style="position: relative">
 	     <div class="panel-heading">
-	     	<strong>&Uacute;ltimos arquivos importados</strong>
+	     	<strong>Indicador: ${observacao.indicador.nome} - Arquivo: ${observacao.fileUpload.name}</strong>
 	     </div>
 	     <table class="table table-striped">
 	         <thead>
 	             <tr>
-	         	#{list objects, as:'object'}
-	         		#{if object.observacaoDetailList.isEmpty() }
-	                 	<th>${object.atributo.nome}</th>
+	         	#{list headers, as:'object'}
+	         		#{if object != 'observacao' }
+	                 		<th>${object.nome}</th>
 	                 #{/if}
 	             #{/list}
 	             </tr>
@@ -50,14 +51,16 @@
 	                 	<th>${object1.atributo.nome}</th>
 	             #{/list}
 	             #{/ifnot}
-	             </tr>
+	             </tr>	
 	         </thead>
 	         <tbody>
-	         <tr>
-	        #{list object.observacaoDetailList, as:'object1'}
-	                 <td><a href="/observacaodetails/show?id=${object1.id}">${object1.valor}</a></td>
-			#{/list}
+	         #{list objects, as:'object'}
+		         <tr>
+		        #{list object.observacaoDetailList, as:'object1'}
+		                 <td><a href="/observacaodetails/show?id=${object1.id}">${object1.valor}</a></td>
+				#{/list}
 	             </tr>
+			#{/list}
 	         </tbody>
 	     </table>
  		</div>
