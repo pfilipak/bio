@@ -16,6 +16,9 @@ public class FileUpload extends Model {
 	@Enumerated(EnumType.STRING)
 	public Status status;
 	
+	@Enumerated(EnumType.STRING)
+	public Type type;
+	
 	public Date createDate = new Date();
 	
 	public FileUpload(){}
@@ -28,6 +31,10 @@ public class FileUpload extends Model {
 	
 	public enum Status {
 		CREATED, PROCESSED, ERROR;
+	}
+	
+	public enum Type {
+		PLANILHA, MOBILE;
 	}
 
 	@Override

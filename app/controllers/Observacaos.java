@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controllers.CRUD.ObjectType;
+import models.FileUpload;
 import models.Observacao;
 import play.Logger;
 import play.data.binding.Binder;
@@ -54,7 +55,7 @@ public class Observacaos extends CRUD {
 		Logger.info("Editing fileUploadId[%s]", fileUploadId);
 		ObjectType type = ObjectType.get(getControllerClass());
 		List<Observacao> objects = Observacao.find("fileUpload.id = ?", fileUploadId).fetch();
-        Model observacao = objects.iterator().next();
+		Observacao observacao = (Observacao) objects.iterator().next();
         List<String> headers = new ArrayList<String>();
         for (Observacao observacao2 : objects) {
         	String nome = observacao2.atributo.nome;
@@ -62,7 +63,11 @@ public class Observacaos extends CRUD {
         		headers.add(nome);
         	}
 		}
-        render("app/views/Observacaos/list.html", type, objects, 0, 0, 0, "", "", observacao, headers);
+        if (FileUpload.Type.MOBILE.equals(observacao.fileUpload.type)){
+        	render("app/views/Observacaos/list.html", type, objects, 0, 0, 0, "", "", observacao, headers);
+        } else {
+        	render("app/views/Observacaos/listPlan.html", type, objects, 0, 0, 0, "", "", observacao, headers);
+        }
 	 }
 	 
 }

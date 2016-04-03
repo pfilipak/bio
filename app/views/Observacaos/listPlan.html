@@ -1,0 +1,44 @@
+#{extends 'theme/main.html' /}
+
+#{set title:messages.get('crud.list.title', type.name) /}
+
+<div id="crudList" class="${type.name}">
+
+    <h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>
+
+    <div id="crudListSearch">
+        #{crud.search /}
+    </div>
+
+ 		
+    <div id="crudListTable">
+      <div id="panel2" class="panel panel-default magic-element width-full isotope-item col-md-10" style="position: relative">
+	     <div class="panel-heading">
+	     	<p><strong>Indicador: ${observacao?.indicador?.nome}</strong></p>
+	     	<p><strong>Arquivo: ${observacao?.fileUpload?.name}</strong></p>
+	     </div>
+	     <table class="table table-striped">
+	         <thead>
+	             <tr>
+	         	#{list headers, as:'object'}
+	                 <th>${object}</th>
+	             #{/list}
+	             </tr>
+	         </thead>
+	         <tbody>
+	         	<tr>
+		        #{list objects, as:'object'}
+		        #{if object_index % headers.size() == 0 }
+	           		 <td><a href="/observacaos/show?id=${object.id}">${object.valor}</a></td>
+		         </tr>
+		         <tr>
+		         #{/if}
+		         #{else}
+		         	<td><a href="/observacaos/show?id=${object.id}">${object.valor}</a></td>
+		         #{/else}
+			#{/list}
+	         </tbody>
+	     </table>
+ 		</div>
+ 		
+</div>

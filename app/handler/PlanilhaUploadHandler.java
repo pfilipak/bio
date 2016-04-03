@@ -9,8 +9,6 @@ import models.Observacao;
 import play.Logger;
 import play.data.Upload;
 import play.data.validation.Validation;
-import play.db.jpa.JPABase;
-import play.mvc.Controller;
 import play.mvc.Scope.Flash;
 
 public class PlanilhaUploadHandler {
@@ -29,6 +27,7 @@ public class PlanilhaUploadHandler {
 			FileUpload uploadFile = new FileUpload();
 			uploadFile.name = fileName;
 			uploadFile.status = FileUpload.Status.CREATED;
+			uploadFile.type = FileUpload.Type.PLANILHA;
 			uploadFile.save();
 			String trim = "";
 			Indicador indicador = new IndicadorHandler().discovery(fileName);

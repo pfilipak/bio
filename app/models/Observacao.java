@@ -23,12 +23,11 @@ public class Observacao extends Model {
 		this.line = line;
 	}
 	
-	public Observacao(FileUpload fileUpload, Indicador indicador, Atributo atributo, String valor, boolean isHeader){
+	public Observacao(FileUpload fileUpload, Indicador indicador, Atributo atributo, String valor){
 		this.fileUpload = fileUpload;
 		this.indicador = indicador;
 		this.atributo = atributo;
 		this.valor = valor;
-		this.isHeader = isHeader;
 	}
 	
 	@OneToMany
@@ -47,14 +46,12 @@ public class Observacao extends Model {
 	
 	public String header;
 	public String line;
-	public boolean isHeader;
 	
 	@Override
 	public String toString() {
 		return "Observacao [fileUpload=" + fileUpload + ", indicador="
 				+ indicador + ", atributo=" + atributo + ", valor=" + valor
-				+ ", header=" + header + ", line=" + line + ", isHeader="
-				+ isHeader + "]";
+				+ ", header=" + header + ", line=" + line + "]";
 	}
 
 

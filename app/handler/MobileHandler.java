@@ -25,6 +25,8 @@ public class MobileHandler {
 		InputStream in = new FileInputStream(file);
 		String fileName = file.getName();
 		FileUpload fileUpload = new FileUpload(fileName);
+		fileUpload.type = FileUpload.Type.MOBILE;
+		fileUpload.status = FileUpload.Status.CREATED;
 		fileUpload.save();
 		
 		Indicador indicador = new IndicadorHandler().discovery(fileName);
@@ -54,7 +56,7 @@ public class MobileHandler {
 		                			Logger.info("hasChildren [%s]", childNodes.getLength());
 		                			String textContent1 = e.getTextContent();
 		                			Logger.info("atributo[%s] textContent[%s]", atributo, textContent1);
-									Observacao observacao1 = new Observacao(fileUpload, indicador, atributo, textContent1, true);
+									Observacao observacao1 = new Observacao(fileUpload, indicador, atributo, textContent1);
 		                			observacao1.save();
 		                			for (int i = 0; i < childNodes.getLength(); i++) {
 										Node nodeChild = childNodes.item(i);
@@ -74,7 +76,7 @@ public class MobileHandler {
 	                			} else {
 		                			String textContent = e.getTextContent();
 		                			Logger.info("atributo[%s] textContent[%s]", atributo, textContent);
-									Observacao observacao = new Observacao(fileUpload, indicador, atributo, textContent, true);
+									Observacao observacao = new Observacao(fileUpload, indicador, atributo, textContent);
 		                			observacao.save();
 		                		}
 	                		} 
