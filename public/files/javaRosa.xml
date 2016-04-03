@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xforms xmlns="http://openrosa.org/xforms/xformsList">
+  <xform>
+    <name>FormBorboleta Form</name>
+    <formID>BorboletaSelect</formID>
+    <version>2012072302</version>
+    <hash>md5:9dedaa906b33d5fb25211889653cd5fb</hash>
+    <downloadUrl>http://192.168.0.100:9000/public/files/FormBorboleta.xml</downloadUrl>
+  </xform>
+ </xforms>
