@@ -11,7 +11,31 @@
     </div>
 
     <div id="crudListTable">
-        #{crud.table /}
+      <div id="panel2" class="panel panel-default magic-element width-full isotope-item col-md-10" style="position: relative">
+	     <div class="panel-heading">
+	     	<strong>&Uacute;ltimos arquivos importados</strong>
+	     </div>
+	     <table class="table table-striped">
+	         <thead>
+	             <tr>
+	                 <th>Id</th>
+	                 <th>Indicador</th>
+	                 <th>Atributo</th>
+	                 <th>Valor</th>
+	             </tr>
+	         </thead>
+	         <tbody>
+	         #{list objects, as:'object'}
+	         <tr>
+	                 <td>${object.id}</td>
+					 <td>${object.indicador.nome}</td>
+	                 <td>${object.atributo.nome}</td>
+	                 <td>${object.valor}</td>
+	             </tr>
+			#{/list}
+	         </tbody>
+	     </table>
+ 		</div>
     </div>
 
     <div id="crudListPagination">

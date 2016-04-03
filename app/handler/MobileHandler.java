@@ -3,7 +3,6 @@ package handler;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.List;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -11,6 +10,7 @@ import models.Atributo;
 import models.FileUpload;
 import models.Indicador;
 import models.Observacao;
+import models.ObservacaoDetail;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -52,6 +52,10 @@ public class MobileHandler {
 	                			NodeList childNodes = e.getChildNodes();
 	                			if (childNodes.getLength() > 1) {
 		                			Logger.info("hasChildren [%s]", childNodes.getLength());
+		                			String textContent1 = e.getTextContent();
+		                			Logger.info("atributo[%s] textContent[%s]", atributo, textContent1);
+									Observacao observacao1 = new Observacao(fileUpload, indicador, atributo, textContent1, true);
+		                			observacao1.save();
 		                			for (int i = 0; i < childNodes.getLength(); i++) {
 										Node nodeChild = childNodes.item(i);
 //										for (Node object1 = nodeChild.getFirstChild(); object1 != null; object1 = object1.getNextSibling()) {
@@ -59,9 +63,10 @@ public class MobileHandler {
 								                Element e1 = (Element)nodeChild;
 								                Atributo atributo1 = Atributo.findByNome(e1.getTagName());
 								                String textContent = e1.getTextContent();
-					                			Logger.info("atributo[%s] textContent[%s]", atributo1, textContent);
-								                Observacao observacao = new Observacao(fileUpload, indicador, atributo1, e1.getTextContent(), false);
-					                			observacao.save();
+					                			Logger.info("observacao1[%s] atributo[%s] textContent[%s]", observacao1,  atributo1, textContent);
+					                			Logger.info("atributo1[%s]", atributo1);
+					                			ObservacaoDetail observacaoDetail = new ObservacaoDetail(observacao1, atributo1, e1.getTextContent());
+					                			observacaoDetail.save();
 											}
 //										}
 									}

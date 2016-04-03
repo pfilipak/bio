@@ -5,7 +5,6 @@ import javax.persistence.ManyToOne;
 
 import play.db.jpa.Model;
 @Entity(name="observacao")
-
 public class Observacao extends Model {
 
 	public Observacao() {
