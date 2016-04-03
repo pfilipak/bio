@@ -23,12 +23,32 @@ public class StartUpJob extends Job {
 		Indicador borboletas = new Indicador("Borboletas");
 		borboletas.save();
 		
-		Atributo dap = new Atributo("dap");
+		Atributo dap = new Atributo("collector");
 		dap.save();
-		Atributo copa = new Atributo("copa");
+		Atributo copa = new Atributo("revision");
 		copa.save();
-		Atributo altura = new Atributo("altura");
+		Atributo altura = new Atributo("transecto");
 		altura.save();
+		Atributo formNumber = new Atributo("formNumber");
+		formNumber.save();
+		Atributo date = new Atributo("date");
+		date.save();
+		Atributo weatherCondition = new Atributo("weatherCondition");
+		weatherCondition.save();
+		Atributo samplingStation = new Atributo("samplingStation");
+		samplingStation.save();
+		Atributo protectedArea = new Atributo("protectedArea");
+		protectedArea.save();
+		Atributo observation = new Atributo("observation");
+		observation.save();
+		Atributo tribeCode = new Atributo("tribeCode");
+		tribeCode.save();
+		Atributo uncertainty = new Atributo("uncertainty");
+		uncertainty.save();
+		Atributo individualNumber = new Atributo("individualNumber");
+		individualNumber.save();
+		Atributo trap = new Atributo("trap");
+		trap.save();
 		
 		FileUpload fileUpload = new FileUpload("teste.csv");
 		fileUpload.save();

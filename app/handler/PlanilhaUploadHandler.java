@@ -13,7 +13,7 @@ import play.db.jpa.JPABase;
 import play.mvc.Controller;
 import play.mvc.Scope.Flash;
 
-public class FileUploadHandler {
+public class PlanilhaUploadHandler {
 
 	public List<FileUpload> lastFileImport(){
     	Logger.info("Show last 10 files");
@@ -31,6 +31,7 @@ public class FileUploadHandler {
 			uploadFile.status = FileUpload.Status.CREATED;
 			uploadFile.save();
 			String trim = "";
+			Indicador indicador = new IndicadorHandler().discovery(fileName);
 			try {
 				String[] content = new String(data.asBytes()).split("\n");
 				Atributo[] headers = null;
@@ -54,8 +55,7 @@ public class FileUploadHandler {
 						 String[] line = trim.split(";");
 						 for (int j = 0; j < line.length; j++) {
 							
-							Indicador findById = Indicador.findById(new Long(1));
-							Observacao observacao = new Observacao(uploadFile, findById, headers[j], line[j], headerAsLine, trim);
+							Observacao observacao = new Observacao(uploadFile, indicador, headers[j], line[j], headerAsLine, trim);
 							observacao.save();
 							
 						}

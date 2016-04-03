@@ -20,6 +20,13 @@ public class Observacao extends Model {
 		this.line = line;
 	}
 	
+	public Observacao(FileUpload fileUpload, Indicador indicador, Atributo atributo, String valor){
+		this.fileUpload = fileUpload;
+		this.indicador = indicador;
+		this.atributo = atributo;
+		this.valor = valor;
+	}
+	
 	@ManyToOne
 	public FileUpload fileUpload;
 	

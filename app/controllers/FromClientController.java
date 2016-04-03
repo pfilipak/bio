@@ -1,10 +1,10 @@
 package controllers;
 
+import handler.MobileHandler;
+
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import play.Logger;
 import play.mvc.Controller;
@@ -27,21 +27,33 @@ public class FromClientController extends Controller {
 	}
 
 	public static void submission(String body, File attachment) {
-		Logger.info("submition[%s] [%s]", body, attachment);
-		Map<String, play.mvc.Http.Header> headers = response.headers;
-		
-		headers.put("Location", new Header("Location", URLEncoder.encode("http://192.168.0.100:9000/accept")));
-		response.status = 204;
+		try {
+			Logger.info("submition[%s] [%s]", body, attachment);
+			Map<String, play.mvc.Http.Header> headers = response.headers;
+			
+			headers.put("Location", new Header("Location", URLEncoder.encode("http://192.168.0.100:9000/accept")));
+			response.status = 204;
+		} catch (Exception e) {
+			Logger.error(e, e.getMessage());
+			throw new RuntimeException(e);
+		}
 	}
 	
-	public static void accept(String body, File xml_submission_file){
-		String absoluteFile = xml_submission_file.getAbsolutePath();
-		Logger.info("accept[%s] [%s]", body, absoluteFile);
+	public static void accept(String body, File xml_submission_file) throws Exception{
+		try {
+			String absoluteFile = xml_submission_file.getAbsolutePath();
+			Logger.info("accept[%s] [%s]", body, absoluteFile);
+			
+			FileUtils fileUtils = new FileUtils();
+			String content = fileUtils.read(absoluteFile);
+			Logger.info("Accept content[%s]", content);
+			MobileHandler xmlUtils = new MobileHandler();
+			xmlUtils.parse(xml_submission_file);
+			response.status = 201;
+		} catch (Exception e) {
+			Logger.error(e, e.getMessage());
+			throw new RuntimeException(e);
+		}
 		
-		FileUtils fileUtils = new FileUtils();
-		String content = fileUtils.read(absoluteFile);
-		Logger.info("Accept content[%s]", content);
-		
-		response.status = 201;
 	}
 }

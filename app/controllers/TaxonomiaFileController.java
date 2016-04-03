@@ -1,6 +1,6 @@
 package controllers;
 
-import handler.FileUploadHandler;
+import handler.PlanilhaUploadHandler;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import play.mvc.Controller;
 public class TaxonomiaFileController extends Controller {
 
 	public static void list(){
-		List<FileUpload> uploadFileList = new FileUploadHandler().lastFileImport();
+		List<FileUpload> uploadFileList = new PlanilhaUploadHandler().lastFileImport();
     	String title = "Importar Taxonomia";
     	String sampleHead = "nomePopular;nomeCientifco;genero;familia;ordem;classe;filo;reino;nomeAutor;grauAmeaca";
     	String sampleLine = "Lobo Guará;Chrysocyon brachyurus;Chrysocyon;Canidae;Carnivora;Mammalia;Chordata;Animalia;;";
@@ -21,7 +21,7 @@ public class TaxonomiaFileController extends Controller {
 	
 	public static void upload(Upload data) throws Exception{
 		Logger.info("import... lala");
-			new FileUploadHandler().upload(data, flash, validation);
+			new PlanilhaUploadHandler().upload(data, flash, validation);
 			list();
 	}
 }

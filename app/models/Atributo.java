@@ -15,6 +15,10 @@ public class Atributo extends Model {
 	
 	public String nome;
 
+	public static Atributo findByNome(String nome) {
+		return find("nome", nome).first();
+	}
+	
 	@Override
 	public String toString() {
 		return "Atributo [id=" + id + ", nome=" + nome + "]";
