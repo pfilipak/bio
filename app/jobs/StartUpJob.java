@@ -14,13 +14,13 @@ public class StartUpJob extends Job {
 
 	@Override
 	public void doJob() throws Exception {
-		Indicador plantas = new Indicador("Plantas");
+		Indicador plantas = new Indicador("Planta");
 		plantas.save();
-		Indicador mamiferos = new Indicador("Mamíferos");
+		Indicador mamiferos = new Indicador("Mamífero");
 		mamiferos.save();
-		Indicador aves = new Indicador("Aves");
+		Indicador aves = new Indicador("Ave");
 		aves.save();
-		Indicador borboletas = new Indicador("Borboletas");
+		Indicador borboletas = new Indicador("Borboleta");
 		borboletas.save();
 		
 		Atributo dap = new Atributo("collector");

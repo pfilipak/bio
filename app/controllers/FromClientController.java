@@ -49,7 +49,7 @@ public class FromClientController extends Controller {
 			Logger.info("Accept content[%s]", content);
 			MobileHandler xmlUtils = new MobileHandler();
 			xmlUtils.parse(xml_submission_file);
-			response.status = 201;
+			response.status = 501;
 		} catch (Exception e) {
 			Logger.error(e, e.getMessage());
 			throw new RuntimeException(e);

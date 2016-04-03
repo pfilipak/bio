@@ -15,6 +15,9 @@ import models.Observacao;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import play.Logger;
 
 public class MobileHandler {
 
@@ -28,7 +31,9 @@ public class MobileHandler {
 		
 		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(in);
 		 Node objects = doc.getDocumentElement();
+		 Integer position = 0;
 	        for (Node object = objects.getFirstChild(); object != null; object = object.getNextSibling()) {
+	        	position++;
 	            if (object instanceof Element) {
 	                Element e = (Element)object;
 	                
@@ -40,14 +45,35 @@ public class MobileHandler {
 //	                <meta>
 //	                   <instanceID>uuid:2d189bc3-88df-4dc9-a843-87209c83153a</instanceID>
 //	                </meta>
-	                	
-	                	
-	                	Observacao observacao = new Observacao(fileUpload, indicador, atributo, e.getTextContent());
-	                	observacao.save();
+	                	if (atributo == null) {
+	                		throw new RuntimeException("Atributo não cadastrado: " + e.getTagName());
+	                	} else {
+	                		if (e.hasChildNodes()) {
+	                			NodeList childNodes = e.getChildNodes();
+	                			if (childNodes.getLength() > 1) {
+		                			Logger.info("hasChildren [%s]", childNodes.getLength());
+		                			for (int i = 0; i < childNodes.getLength(); i++) {
+										Node nodeChild = childNodes.item(i);
+//										for (Node object1 = nodeChild.getFirstChild(); object1 != null; object1 = object1.getNextSibling()) {
+											if (nodeChild instanceof Element) {
+								                Element e1 = (Element)nodeChild;
+								                Atributo atributo1 = Atributo.findByNome(e1.getTagName());
+								                String textContent = e1.getTextContent();
+					                			Logger.info("atributo[%s] textContent[%s]", atributo1, textContent);
+								                Observacao observacao = new Observacao(fileUpload, indicador, atributo1, e1.getTextContent(), false);
+					                			observacao.save();
+											}
+//										}
+									}
+	                			} else {
+		                			String textContent = e.getTextContent();
+		                			Logger.info("atributo[%s] textContent[%s]", atributo, textContent);
+									Observacao observacao = new Observacao(fileUpload, indicador, atributo, textContent, true);
+		                			observacao.save();
+		                		}
+	                		} 
+	                	}
 	                }
-	                
-					
-	                
 	            }
 	        }
 	}
