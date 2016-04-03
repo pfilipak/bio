@@ -21,7 +21,8 @@ public class ImportFileController extends Controller {
 	
 	public static void edit(){
 		List<FileUpload> uploadFileList = new PlanilhaUploadHandler().lastFileImport();
-		render(uploadFileList);
+		String title = "Editar dados";
+		render(uploadFileList, title);
 	}
 	
 	public static void upload(Upload data) throws Exception{

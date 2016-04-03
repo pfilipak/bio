@@ -14,15 +14,14 @@
     <div id="crudListTable">
       <div id="panel2" class="panel panel-default magic-element width-full isotope-item col-md-10" style="position: relative">
 	     <div class="panel-heading">
-	     	<strong>Indicador: ${observacao.indicador.nome} - Arquivo: ${observacao.fileUpload.name}</strong>
+	     	<p><strong>Indicador: ${observacao.indicador.nome}</strong></p>
+	     	<p><strong>Arquivo: ${observacao.fileUpload.name}</strong></p>
 	     </div>
 	     <table class="table table-striped">
 	         <thead>
 	             <tr>
 	         	#{list headers, as:'object'}
-	         		#{if object != 'observacao' }
-	                 		<th>${object.nome}</th>
-	                 #{/if}
+	                 <th>${object}</th>
 	             #{/list}
 	             </tr>
 	         </thead>

@@ -36,21 +36,19 @@
          <thead>
              <tr>
                  <th>Id</th>
-                 <th>Status</th>
                  <th>Nome do arquivo</th>
                  <th>Data cria&ccedil;&atilde;o</th>
              </tr>
          </thead>
          <tbody>
-         #{list items:uploadFileList, as:'uploadFile'}
-                #{if uploadFile.status.name() == 'PROCESSED' }
-         		<tr>
-                 <td><a href="/upload/list/${uploadFile.id}">${uploadFile.id}</td>
-				 <td>${uploadFile.status}</td>
-                 <td>${uploadFile.name}</td>
-                 <td>${uploadFile.createDate}</td>
-             </tr>
-				#{/if}
+          #{list items:uploadFileList, as:'uploadFile'}
+	         #{if uploadFile.status.name() == 'PROCESSED' }
+	         <tr>
+	                 <td><a href="/upload/list/${uploadFile.id}">${uploadFile.id}</a></td>
+	                 <td><a href="/upload/list/${uploadFile.id}">${uploadFile.name}</a></td>
+	                 <td><a href="/upload/list/${uploadFile.id}">${uploadFile.createDate}</a></td>
+	          </tr>
+			#{/if}
 		#{/list}
          </tbody>
      </table><!-- /table-striped -->

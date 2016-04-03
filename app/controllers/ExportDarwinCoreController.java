@@ -9,6 +9,7 @@ public class ExportDarwinCoreController extends Controller {
 
 	public static void index(){
 		List<FileUpload> fileList = FileUpload.findAll();
-		render(fileList);
+		String title = "Gerar arquivo DarwinCore";
+		render(fileList, title);
 	}
 }

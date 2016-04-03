@@ -1,10 +1,9 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import models.Indicador;
 import models.Observacao;
-import models.ObservacaoDetail;
 import play.Logger;
 import play.db.Model;
 
@@ -30,7 +29,13 @@ public class Observacaos extends CRUD {
 		ObjectType type = ObjectType.get(getControllerClass());
 		List<Observacao> objects = Observacao.find("fileUpload.id = ?", fileUploadId).fetch();
         Model observacao = objects.iterator().next();
-        List<Observacao> headers = Observacao.find("select distinct(o.atributo) from models.Observacao o where o.fileUpload.id = ?", fileUploadId).fetch();
+        List<String> headers = new ArrayList<String>();
+        for (Observacao observacao2 : objects) {
+        	String nome = observacao2.atributo.nome;
+			if (!headers.contains(nome) && observacao2.observacaoDetailList.isEmpty()) {
+        		headers.add(nome);
+        	}
+		}
         render("app/views/Observacaos/list.html", type, objects, 0, 0, 0, "", "", observacao, headers);
 	 }
 	 
