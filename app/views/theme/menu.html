@@ -1,8 +1,15 @@
 <ul>
         <li class="side-nav-item ${request.action == 'ImportFileController.edit'? 'active' : '' }">
             <a href="/upload/planilha/edit">
+                <i class="nav-item-icon icon glyphicon glyphicon-tags"></i>
+                Criar indicador
+            </a>
+        </li>
+        
+        <li class="side-nav-item ${request.action == 'ImportFileController.edit'? 'active' : '' }">
+            <a href="/upload/planilha/edit">
                 <i class="nav-item-icon icon glyphicon glyphicon-edit"></i>
-                Editar dados
+                Editar dados importados
             </a>
         </li>
 
@@ -18,18 +25,24 @@
                 Exportar DarwinCore
             </a>
         </li>
+        <li class="side-nav-item ${request.action == 'ExportDarwinCoreController.index'? 'active' : '' }">
+            <a href="/export/darwincore">
+                <i class="nav-item-icon icon glyphicon glyphicon-signal"></i>
+                Gráfico
+            </a>
+        </li>
         
          <li class="side-nav-item ">   
                 <a href="#level3">
                     <i class="nav-item-caret"></i>
-                    <i class="nav-item-icon glyphicon glyphicon-cloud-upload"></i>
+                    <i class="nav-item-icon glyphicon glyphicon-wrench"></i>
                     Configurações
                 </a>
                 %{
                 if(request.controller == 'Indicadors'
                 || request.controller == 'Atributos'
                 || request.controller == 'Mappings'
-                || request.controller == 'TaxonomiaFileController'
+                || request.controller == 'BackupController'
                 || request.controller == 'DarwinCores') {
                         importContentClass = 'open'
                     }
@@ -65,10 +78,10 @@
 			                Mapeamento
 			            </a>
 			        </li>
-			        <li class="side-nav-item ${request.action == 'TaxonomiaFileController.list'? 'active' : '' }">
-			            <a href="/upload/taxonomia/list">
-			                <i class="nav-item-icon icon glyphicon glyphicon-edit"></i>
-			                Importar taxonomia
+			        <li class="side-nav-item ${request.action == 'BackupController.list'? 'active' : '' }">
+			            <a href="/backup">
+			                <i class="nav-item-icon icon glyphicon glyphicon-floppy-disk"></i>
+			                Backup da base de dados
 			            </a>
 			        </li>
                 </ul>

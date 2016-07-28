@@ -1,0 +1,90 @@
+#{extends 'theme/main.html' /}
+#{set 'moreScripts'}
+	<script src="/public/theme/assets/bootstrap-jasny/js/fileinput.js"></script>
+#{/set}
+
+#{set title:'Home' /}
+
+<ul>
+#{if flash.error}
+<div class="form-group col-md-10">
+    <p class="text-danger text-center">
+        <strong>${flash.error}</strong>
+    </p>
+</div>	
+#{/if}
+
+#{if flash.success}
+<div class="form-group col-md-10">
+    <p class="text-success text-center">
+        <strong>${flash.success}</strong>
+    </p>
+</div>
+#{/if}
+
+
+<div class="app-body">
+                            
+                            <!-- app content here -->
+                            <div class="magic-layout isotope" style="position: relative; overflow: hidden; height: 3533px;">
+                                <div class="box magic-element width-full isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+                                    <h2 class="box-heading">
+                                        <div class="btn-group pull-right">
+                                            <a href="#" role="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                                                <i class="icon ion-ios7-arrow-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a class="form-theme" data-toggle="default" href="#">Default</a></li>
+                                                <li><a class="form-theme" data-toggle="flat" href="#">Flat</a></li>
+                                                <li><a class="form-theme" data-toggle="ion" href="#">Ion</a></li>
+                                                <li class="divider"></li>
+                                                <li><a class="form-theme" data-toggle="flat-ion" href="#">Flat &amp; Ion</a></li>
+                                                <li class="divider"></li>
+                                                <li><a class="form-theme" data-toggle="disabled-fieldset" href="#">Toggle Disable</a></li>
+                                            </ul>
+                                        </div>
+                                        Envio de arquivos para S3 (AWS)
+                                    </h2>
+                                    <form class="form-horizontal" role="form">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input">Nome do Backet</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="input" placeholder="Nome do Backet">
+                                                </div>
+                                            </div><!-- /form-group -->
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="inputSelect">Região</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" id="inputSelect">
+                                                        <option>- Selecione -</option>
+                                                        <option>São Paulo</option>
+                                                        <option>Virginia</option>
+                                                        <option>Oregon</option>
+                                                    </select>
+                                                </div>
+                                            </div><!-- /form-group -->
+                                              <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input">Chave de acesso</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="input" placeholder="key">
+                                                </div>
+                                            </div><!-- /form-group -->
+                                              <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="input">Chave secreta</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="input" placeholder="secret">
+                                                </div>
+                                            </div><!-- /form-group -->
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="reset" class="btn btn-default">Limpar campos</button>
+                                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                                </div>
+                                            </div><!-- /form-group -->
+                                        </fieldset><!-- /fieldset -->
+                                    </form><!-- /form -->
+                                </div><!-- /box -->
+
+                                
