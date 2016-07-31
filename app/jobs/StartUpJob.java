@@ -55,20 +55,20 @@ public class StartUpJob extends Job {
 		FileUpload fileUpload = new FileUpload("teste.csv");
 		fileUpload.save();
 		
-		new Observacao(fileUpload, plantas, dap, "1.90", "dap;copa;altura", "1.90;2.0;17.9", 1).save();
+		new Observacao(fileUpload, plantas, dap, "1.60", "dap;copa;altura", "1.90;2.0;17.9", 1).save();
 		new Observacao(fileUpload, plantas, copa, "2.0", "dap;copa;altura", "1.90;2.0;17.9", 1).save();
 		new Observacao(fileUpload, plantas, altura, "17.9", "dap;copa;altura", "1.90;2.0;17.9", 1).save();
-		new Observacao(fileUpload, plantas, date, "21/05/2016", "dap;copa;altura", "1.90;2.0;17.9", 1).save();
+		new Observacao(fileUpload, plantas, date, "21/01/2016", "dap;copa;altura", "1.90;2.0;17.9", 1).save();
 		
-		new Observacao(fileUpload, plantas, dap, "1.80", "dap;copa;altura", "1.80;2.1;17.6", 2).save();
+		new Observacao(fileUpload, plantas, dap, "1.65", "dap;copa;altura", "1.80;2.1;17.6", 2).save();
 		new Observacao(fileUpload, plantas, copa, "2.1", "dap;copa;altura", "1.80;2.1;17.6", 2).save();
 		new Observacao(fileUpload, plantas, altura, "17.6", "dap;copa;altura", "1.80;2.1;17.6", 2).save();
-		new Observacao(fileUpload, plantas, date, "21/06/2016", "dap;copa;altura", "1.90;2.0;17.9", 2).save();
+		new Observacao(fileUpload, plantas, date, "21/03/2016", "dap;copa;altura", "1.90;2.0;17.9", 2).save();
 		
-		new Observacao(fileUpload, plantas, dap, "1.60", "dap;copa;altura", "1.60;2.1;17.6", 3).save();
+		new Observacao(fileUpload, plantas, dap, "1.80", "dap;copa;altura", "1.60;2.1;17.6", 3).save();
 		new Observacao(fileUpload, plantas, copa, "2.7", "dap;copa;altura", "1.60;2.1;17.6", 3).save();
 		new Observacao(fileUpload, plantas, altura, "19", "dap;copa;altura", "1.60;2.1;17.6", 3).save();
-		new Observacao(fileUpload, plantas, date, "21/07/2016", "dap;copa;altura", "1.60;2.0;17.9", 3).save();
+		new Observacao(fileUpload, plantas, date, "21/08/2016", "dap;copa;altura", "1.60;2.0;17.9", 3).save();
 		
 		new DarwinCore("catalogNumber").save();
 		new DarwinCore("recordedNumber").save();
