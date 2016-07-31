@@ -6,7 +6,7 @@
 	var TUTORIAL_SAVVY = {
 
 		/*return google visualization data*/
-		getvisualizationData : function(jsonData) {
+		getvisualizationData : function(verification, attrib1, jsonData) {
 
 			var point1, point2, dataArray = [],
 
@@ -14,7 +14,7 @@
 
 			data.addColumn('string', 'Name');
 
-			data.addColumn('number', 'Marks in Mathematics');
+			data.addColumn('number', attrib1);
 
 			data.addColumn({
 				type : 'string',
@@ -24,7 +24,7 @@
 				}
 			});
 
-			data.addColumn('number', 'Marks In Computer');
+			data.addColumn('number', 'Atributo de verificação');
 
 			data.addColumn({
 				type : 'string',
@@ -41,6 +41,9 @@
 
 				point2 = "Computer : " + obj.computerMark + "";
 
+				//var from = obj.name.split("/");
+				//var f = new Date(from[2], from[1] - 1, from[0]);
+				
 				dataArray.push([ obj.name, obj.mathematicsMark,
 						TUTORIAL_SAVVY.returnTooltip(point1, point2),
 						obj.computerMark,
@@ -52,21 +55,16 @@
 			return data;
 		},
 		/*return options for bar chart: these options are for various configuration of chart*/
-		getOptionForBarchart : function() {
+		getOptionForBarchart : function(attrib1) {
 
 			var options = {
+				title: 'Gráfico: ' + attrib1,
 				animation : {
 					duration : 2000,
 					easing : 'out'
 				},
 				curveType : 'function',
-				hAxis : {
-					baselineColor : '#ccc'
-				},
-				vAxis : {
-					baselineColor : '#ccc',
-					gridlineColor : '#fff'
-				},
+				
 
 				isStacked : true,
 				height : 400,
@@ -87,16 +85,25 @@
 					isHtml : true,
 					showColorCode : true,
 					isStacked : true
-				}
+				},
+				series: {
+			          0: {targetAxisIndex: 0},
+			        },
+			        hAxis: {
+			          ticks: [new Date(2016, 0), new Date(2016, 1), new Date(2016, 2), new Date(2016, 3),
+			                  new Date(2016, 4),  new Date(2016, 5), new Date(2016, 6), new Date(2016, 7),
+			                  new Date(2016, 8), new Date(2016, 9), new Date(2016, 10), new Date(2016, 11)
+			                 ]
+			        }
 			};
 			return options;
 		},
 		/*Draws a Bar chart*/
-		drawBarChart : function(inputdata) {
+		drawBarChart : function(verification, attrib1, inputdata) {
 
-			var barOptions = TUTORIAL_SAVVY.getOptionForBarchart(),
+			var barOptions = TUTORIAL_SAVVY.getOptionForBarchart(attrib1),
 
-			data = TUTORIAL_SAVVY.getvisualizationData(inputdata),
+			data = TUTORIAL_SAVVY.getvisualizationData(verification, attrib1, inputdata),
 
 			chart = new google.visualization.LineChart(document
 					.getElementById('student-bar-chart'));
@@ -168,19 +175,20 @@
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<a href="#" onclick='var attrib = $("#atributoNome").val(); 	$.ajax({
+				<a href="#" onclick='var attrib1 = $("#atributoNome").val();
+					var verification = $("#verification").val();
+				$.ajax({
 
-					url : "chart/data?constantNumber=" +$("#verification").val()
+					url : "chart/data?constantNumber=" + verification
 							
-							+ "&parameterName=" + attrib,
+							+ "&parameterName=" + attrib1,
 
 					dataType : "JSON",
 
 					success : function(data) {
-						TUTORIAL_SAVVY.drawBarChart(data);
+						TUTORIAL_SAVVY.drawBarChart(verification, attrib1, data);
 					}
-				});'>Submit
-					Form</a>
+				});'>Obter gráfico</a>
 			</div>
 		</div>
 		<!-- /form-group -->

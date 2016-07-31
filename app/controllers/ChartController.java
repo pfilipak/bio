@@ -35,7 +35,7 @@ public class ChartController extends Controller {
 		}
 		Gson gson = new Gson();
 		String titleName = gson.toJson(listOfStudent);
-		System.out.println(listOfStudent);
+		System.out.println(titleName);
 		renderText(titleName);
 	}
 	public static void index(){

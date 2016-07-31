@@ -2,20 +2,20 @@ package models;
 
 
 public class Student {
-	private String Name;
+	private String name;
 	private Double mathematicsMark;
 	private Double computerMark;
 	
 	public Student(String valor, Double valor2, Double constantNumber) {
-		Name = valor;
+		name = valor;
 		mathematicsMark = valor2;
 		computerMark = constantNumber;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public Double getMathematicsMark() {
 		return mathematicsMark;
