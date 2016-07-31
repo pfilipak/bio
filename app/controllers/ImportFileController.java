@@ -26,7 +26,7 @@ public class ImportFileController extends Controller {
 	}
 	
 	public static void upload(Upload data) throws Exception{
-		Logger.info("import... lala");
+		Logger.info("import...");
 			new PlanilhaUploadHandler().upload(data, flash, validation);
 			list();
 	}

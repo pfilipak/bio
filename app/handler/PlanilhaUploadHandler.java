@@ -54,7 +54,7 @@ public class PlanilhaUploadHandler {
 						 String[] line = trim.split(";");
 						 for (int j = 0; j < line.length; j++) {
 							
-							Observacao observacao = new Observacao(uploadFile, indicador, headers[j], line[j], headerAsLine, trim);
+							Observacao observacao = new Observacao(uploadFile, indicador, headers[j], line[j], headerAsLine, trim, j);
 							observacao.save();
 							
 						}

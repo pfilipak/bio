@@ -28,5 +28,7 @@ GET     /public/                                staticDir:public
 *       /formList										FromClientController.formList
 *       /submission										FromClientController.submission
 *       /accept											FromClientController.accept
+*       /chart/data										ChartController.data
+*       /chart											ChartController.index
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

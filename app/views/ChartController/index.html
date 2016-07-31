@@ -1,0 +1,195 @@
+#{extends 'theme/main.html' /} #{set 'moreScripts'}
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	var TUTORIAL_SAVVY = {
+
+		/*return google visualization data*/
+		getvisualizationData : function(jsonData) {
+
+			var point1, point2, dataArray = [],
+
+			data = new google.visualization.DataTable();
+
+			data.addColumn('string', 'Name');
+
+			data.addColumn('number', 'Marks in Mathematics');
+
+			data.addColumn({
+				type : 'string',
+				role : 'tooltip',
+				'p' : {
+					'html' : true
+				}
+			});
+
+			data.addColumn('number', 'Marks In Computer');
+
+			data.addColumn({
+				type : 'string',
+				role : 'tooltip',
+				'p' : {
+					'html' : true
+				}
+			});
+
+			/* for loop code for changing inputdata to 'data' of type google.visualization.DataTable*/
+			$.each(jsonData, function(i, obj) {
+
+				point1 = "Math : " + obj.mathematicsMark + "";
+
+				point2 = "Computer : " + obj.computerMark + "";
+
+				dataArray.push([ obj.name, obj.mathematicsMark,
+						TUTORIAL_SAVVY.returnTooltip(point1, point2),
+						obj.computerMark,
+						TUTORIAL_SAVVY.returnTooltip(point1, point2) ]);
+			});
+
+			data.addRows(dataArray);
+
+			return data;
+		},
+		/*return options for bar chart: these options are for various configuration of chart*/
+		getOptionForBarchart : function() {
+
+			var options = {
+				animation : {
+					duration : 2000,
+					easing : 'out'
+				},
+				curveType : 'function',
+				hAxis : {
+					baselineColor : '#ccc'
+				},
+				vAxis : {
+					baselineColor : '#ccc',
+					gridlineColor : '#fff'
+				},
+
+				isStacked : true,
+				height : 400,
+				backgroundColor : '#fff',
+				colors : [ "#68130E", "#c65533" ],
+				fontName : 'roboto',
+				fontSize : 12,
+				legend : {
+					position : 'top',
+					alignment : 'end',
+					textStyle : {
+						color : '#b3b8bc',
+						fontName : 'roboto',
+						fontSize : 12
+					}
+				},
+				tooltip : {
+					isHtml : true,
+					showColorCode : true,
+					isStacked : true
+				}
+			};
+			return options;
+		},
+		/*Draws a Bar chart*/
+		drawBarChart : function(inputdata) {
+
+			var barOptions = TUTORIAL_SAVVY.getOptionForBarchart(),
+
+			data = TUTORIAL_SAVVY.getvisualizationData(inputdata),
+
+			chart = new google.visualization.LineChart(document
+					.getElementById('student-bar-chart'));
+
+			chart.draw(data, barOptions);
+			/*for redrawing the bar chart on window resize*/
+			$(window).resize(function() {
+
+				chart.draw(data, barOptions);
+			});
+		},
+		/* Returns a custom HTML tooltip for Visualization chart*/
+		returnTooltip : function(dataPoint1, dataPoint2) {
+
+			return "<div style='height:30px;width:150px;font:12px,roboto;padding:15px 5px 5px 5px;border-radius:3px;'>"
+					+ "<span style='color:#68130E;font:12px,roboto;padding-right:20px;'>"
+					+ dataPoint1
+					+ "</span>"
+					+ "<span style='color:#c65533;font:12px,roboto;'>"
+					+ dataPoint2 + "</span></div>";
+		},
+		/*Makes ajax call to servlet and download data */
+		getStudentData : function() {
+			var constantNumber = 1.9;
+			$.ajax({
+
+				url : "chart/data?constantNumber="
+						+ document.getElementById('atributoNome')
+						+ "&parameterName=dap",
+
+				dataType : "JSON",
+
+				success : function(data) {
+					TUTORIAL_SAVVY.drawBarChart(data);
+				}
+			});
+		}
+	};
+
+	google.load("visualization", "1", {
+		packages : [ "corechart" ]
+	});
+
+	$(document).ready(function() {
+		//TUTORIAL_SAVVY.getStudentData();
+
+	});
+</script>
+#{/set} #{set title:'Home' /}
+
+
+
+<form class="form-horizontal" role="form">
+	<fieldset>
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="input">Atributo de verificação</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="verification" placeholder="Digite um número">
+			</div>
+		</div>
+		<!-- /form-group -->
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="input">Nome do atributo</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="atributoNome" placeholder="Nome do atributo">
+			</div>
+		</div>
+		<!-- /form-group -->
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<a href="#" onclick='var attrib = $("#atributoNome").val(); 	$.ajax({
+
+					url : "chart/data?constantNumber=" +$("#verification").val()
+							
+							+ "&parameterName=" + attrib,
+
+					dataType : "JSON",
+
+					success : function(data) {
+						TUTORIAL_SAVVY.drawBarChart(data);
+					}
+				});'>Submit
+					Form</a>
+			</div>
+		</div>
+		<!-- /form-group -->
+	</fieldset>
+	<!-- /fieldset -->
+</form>
+<!-- /form -->
+<div id="panel2"
+	class="panel panel-default magic-element width-full isotope-item col-md-10"
+	style="position: relative">
+	<div id="student-bar-chart"></div>
+</div>

@@ -11,16 +11,31 @@ import play.db.jpa.Model;
 @Entity(name="observacao")
 public class Observacao extends Model {
 
+	public String valor;
+	public String header;
+	public String line;
+	public Integer lineNumber;
+
+	@OneToMany
+	public List<ObservacaoDetail> observacaoDetailList = new ArrayList<ObservacaoDetail>();
+	@ManyToOne
+	public FileUpload fileUpload;
+	@ManyToOne
+	public Indicador indicador;
+	@ManyToOne
+	public Atributo atributo;
+	
 	public Observacao() {
 	}
 	
-	public Observacao(FileUpload fileUpload, Indicador indicador, Atributo atributo, String valor, String header, String line) {
+	public Observacao(FileUpload fileUpload, Indicador indicador, Atributo atributo, String valor, String header, String line, Integer lineNumber) {
 		this.fileUpload = fileUpload;
 		this.indicador = indicador;
 		this.atributo = atributo;
 		this.valor = valor;
 		this.header = header;
 		this.line = line;
+		this.lineNumber = lineNumber;
 	}
 	
 	public Observacao(FileUpload fileUpload, Indicador indicador, Atributo atributo, String valor){
@@ -30,29 +45,12 @@ public class Observacao extends Model {
 		this.valor = valor;
 	}
 	
-	@OneToMany
-	public List<ObservacaoDetail> observacaoDetailList = new ArrayList<ObservacaoDetail>();
-	
-	@ManyToOne
-	public FileUpload fileUpload;
-	
-	@ManyToOne
-	public Indicador indicador;
-	
-	@ManyToOne
-	public Atributo atributo;
-	
-	public String valor;
-	
-	public String header;
-	public String line;
-	
 	@Override
 	public String toString() {
 		return "Observacao [fileUpload=" + fileUpload + ", indicador="
 				+ indicador + ", atributo=" + atributo + ", valor=" + valor
-				+ ", header=" + header + ", line=" + line + "]";
+				+ ", header=" + header + ", line=" + line + 
+				", lineNumber=" + lineNumber + "]";
 	}
-
 
 }
